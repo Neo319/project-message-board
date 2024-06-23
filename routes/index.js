@@ -19,4 +19,10 @@ router.get("/", function (req, res, next) {
   res.render("index", { title: "Mini Messageboard", messages: messages });
 });
 
+//GET route for 'create new message' page.
+// note: any needed 'locals' must be provided here...
+router.get("/new", function (req, res, next) {
+  res.render("form", {});
+});
+
 module.exports = router;

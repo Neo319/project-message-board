@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome! POST a new message here! 
+  a(href="/") Or go back
+
+  form(method="POST" action="/new")
+    label(for="mame") Name: 
+    input(type="text")
+
+    label(for="message") Message:  
+    input(type="text")
+
+    Button Submit
