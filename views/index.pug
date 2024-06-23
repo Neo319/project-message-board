@@ -7,6 +7,7 @@ block content
   ul 
     each message, index in messages
       li #{index + 1}. 
-        p User: #{message.user}
+        p <b>#{message.user}</b> said:
         p #{message.text}
+        p <i>Posted: #{message.added.toDateString()}</i>
 
