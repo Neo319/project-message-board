@@ -4,11 +4,12 @@
 <a href="/new">Post new messages here!</a>
 
 <ul>
-  <% messages.forEach(message => { %>
+  <% messages.forEach((message, index) => { %>
   <li>
     <p><%= message.user %> said:</p>
     <p><%= message.text %></p>
     <p><i>Posted: <%= message.added.toUTCString() %></i></p>
+    <a href="/messageDetail/<%=index%>">Open</a>
   </li>
   <% }); %>
 </ul>

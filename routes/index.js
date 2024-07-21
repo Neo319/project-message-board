@@ -35,4 +35,19 @@ router.post("/new", function (req, res, next) {
   res.redirect("/");
 });
 
+//GET message detail.
+router.get("/messageDetail/:index", function (req, res, next) {
+  const messageIndex = parseInt(req.params.index);
+  const message = messages[messageIndex];
+
+  if (message) {
+    res.render("messageDetail", {
+      title: "Message Detail",
+      message: message,
+    });
+  } else {
+    res.status(404).send("Message not found");
+  }
+});
+
 module.exports = router;
