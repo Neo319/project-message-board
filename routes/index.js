@@ -22,7 +22,7 @@ router.get("/", function (req, res, next) {
 //GET route for 'create new message' page.
 // note: any needed 'locals' must be provided here...
 router.get("/new", function (req, res, next) {
-  res.render("form", {});
+  res.render("form", { title: "Post new Message" });
 });
 
 // POST route for creating new messages
