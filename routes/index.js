@@ -8,7 +8,6 @@ const messageController = require("../controllers/messageController");
 router.get("/", messageController.getHomepage);
 
 //GET route for 'create new message' page.
-// note: any needed 'locals' must be provided here...
 router.get("/new", messageController.getNewMessageForm);
 
 // POST route for creating new messages

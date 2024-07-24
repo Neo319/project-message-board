@@ -1,33 +1,44 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
-//use connection string to db as argument when calling this function.
+// Use connection string to db as argument when calling this function.
 
 const { Client } = require("pg");
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  name VARCHAR ( 255 ),
-  message VARCHAR ( 255 ),
+  name VARCHAR (255),
+  message VARCHAR (255),
   date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO usernames (username) 
+INSERT INTO messages (name, message)
 VALUES
-  ('Bryan', "Hello World!"),
-  ('Odin', "Hi There!" ),
-
+  ('Bryan', 'Hello World!'),
+  ('Odin', 'Hi There!');
 `;
 
 async function main() {
-  console.log("seeding...");
+  if (process.argv.length < 3) {
+    console.error("Please provide the connection string as an argument");
+    process.exit(1);
+  }
+
+  const connectionString = process.argv[2];
+  console.log("Seeding...");
   const client = new Client({
-    connectionString: process.argv,
+    connectionString: connectionString,
   });
-  await client.connect();
-  await client.query(SQL);
-  await client.end();
-  console.log("done");
+
+  try {
+    await client.connect();
+    await client.query(SQL);
+  } catch (err) {
+    console.error("Error executing query", err.stack);
+  } finally {
+    await client.end();
+  }
+  console.log("Done");
 }
 
 main();

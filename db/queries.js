@@ -1,4 +1,3 @@
-const { get } = require("../routes");
 const pool = require("./pool");
 
 async function getAllMessages() {
