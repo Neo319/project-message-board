@@ -5,8 +5,9 @@ const db = require("../db/queries");
 
 async function getHomepage(req, res) {
   //get messages from db
-  //temp
-  const messages = [{ user: "she", text: "hi!", added: new Date() }];
+
+  const messages = await db.getAllMessages();
+  console.log("debug: messages: " + messages);
 
   res.render("index", { title: "Mini Messageboard", messages: messages });
 }

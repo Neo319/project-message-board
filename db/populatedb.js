@@ -8,11 +8,11 @@ const SQL = `
 CREATE TABLE IF NOT EXISTS messages (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name VARCHAR (255),
-  message VARCHAR (255),
-  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  text VARCHAR (255),
+  added TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO messages (name, message)
+INSERT INTO messages (name, text)
 VALUES
   ('Bryan', 'Hello World!'),
   ('Odin', 'Hi There!');
