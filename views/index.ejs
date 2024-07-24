@@ -3,6 +3,7 @@
 
 <a href="/new">Post new messages here!</a>
 
+<% if (messages && messages.length) { %>
 <ul>
   <% messages.forEach((message, index) => { %>
   <li>
@@ -13,3 +14,4 @@
   </li>
   <% }); %>
 </ul>
+<% }; %>
