@@ -27,9 +27,11 @@ async function postNewMessage(req, res) {
   res.redirect("/");
 }
 
-async function getMessageDetail(messageIndex) {
+async function getMessageDetail(req, res) {
   //todo - implement sql
-  const message = messages[messageIndex];
+
+  const messageIndex = parseInt(req.params.index) + 1;
+  const message = await db.getMessageById(messageIndex);
 
   if (message) {
     res.render("messageDetail", {

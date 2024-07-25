@@ -14,11 +14,6 @@ router.get("/new", messageController.getNewMessageForm);
 router.post("/new", messageController.postNewMessage);
 
 //GET message detail.
-router.get("/messageDetail/:index", () => {
-  //get message index and pass to controller
-  const messageIndex = parseInt(req.params.index);
-
-  messageController.getMessageDetail(messageIndex);
-});
+router.get("/messageDetail/:index", messageController.getMessageDetail);
 
 module.exports = router;
