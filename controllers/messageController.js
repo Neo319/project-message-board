@@ -17,19 +17,18 @@ async function getNewMessageForm(req, res) {
 }
 
 async function postNewMessage(req, res) {
-  //todo - implement sql
-  messages.push({
+  const message = {
     text: req.body.message,
-    user: req.body.name,
+    name: req.body.name,
     added: new Date(),
-  });
+  };
+
+  await db.insertMessage(message);
 
   res.redirect("/");
 }
 
 async function getMessageDetail(req, res) {
-  //todo - implement sql
-
   const messageIndex = parseInt(req.params.index) + 1;
   const message = await db.getMessageById(messageIndex);
 
